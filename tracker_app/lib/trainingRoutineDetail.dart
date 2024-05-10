@@ -6,38 +6,42 @@ class trainingRoutineDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Dummy list of training routines (replace this with your actual list of routines)
+    List<String> routines = ['Routine 1', 'Routine 2', 'Routine 3', 'Routine 4', 'Routine 5'];
+
     return MaterialApp(
-      title: 'Training Routine Detail',
+      //title: 'Training Routine Detail',
       theme: ThemeData(
-        //fontFamily: 'NuevaFuente',
+        fontFamily: 'NuevaFuente',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Detalle'),
+          title: const Text('Training Routine Detail'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'List of Games',
-                style: TextStyle(fontSize: 24),
-              ),
-              FloatingActionButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyApp()),
-                  );
-                },
-                child: const Icon(Icons.arrow_back),
-              ),
-            ],
-          ),
+        body: ListView.builder(
+          itemCount: routines.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: Text(routines[index]),
+              onTap: () {
+                //funcionalidad
+              },
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MainMenuScreen()),
+            );
+          },
+          child: const Icon(Icons.arrow_back),
         ),
       ),
     );
   }
 }
+
