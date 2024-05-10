@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'listOfGames.dart'; 
 import 'playerProfile.dart';
-import 'trainingRoutineDetail.dart';
+import 'trainingRoutines.dart';
 import 'friendList.dart';
+import 'Data/User.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,19 +33,42 @@ class AccessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tracker App'),
+        actions: [
+           IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              // Close the app
+              Navigator.popUntil(context, (route) => route.isFirst);
+            },
+          ), 
+        ],
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const MainMenuScreen()),
-            );
-          },
-          child: const Text('Login'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // SVG image
+            SvgPicture.asset(
+              'assets/icons/titleIcon.svg',
+              height: 100,
+              width: 100,
+            ),
+            SizedBox(height: 16),
+            // Login button
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MainMenuScreen()),
+                );
+              },
+              child: const Text('Login'),
+            ),
+          ],
         ),
       ),
     );
@@ -56,6 +80,15 @@ class MainMenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    var user1 = User(
+      userName: 'juanito',
+      userId: '123456',
+      email: 'elmarcianito@example.com',
+      password: '********',
+      profileImagePath: 'assets/icons/skull.svg',
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Main Menu'),
@@ -80,20 +113,21 @@ class MainMenuScreen extends StatelessWidget {
                 // Navigate to the player profile screen
                  Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const playerProfile()),
+                    MaterialPageRoute(builder: (context) => playerProfile(user: user1)),
                   );
               },
               child: const Text('Player Profile'),
             ),
+            
             ElevatedButton(
               onPressed: () {
                 // Navigate to the training routine detail screen
                  Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const trainingRoutineDetail()),
+                    MaterialPageRoute(builder: (context) => const trainingRoutines()),
                   );
               },
-              child: const Text('Training Routine Detail'),
+              child: const Text('Training Routines'),
              ),
              ElevatedButton(
               onPressed: () {
@@ -118,33 +152,4 @@ class MainMenuScreen extends StatelessWidget {
     );
   }
 }
-/*
-class GamesListScreen extends StatelessWidget {
-  const GamesListScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    // Go to list games of interest
-    return Container();
-  }
-}
-
-class PlayerProfileScreen extends StatelessWidget {
-  const PlayerProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // Go to player's profile
-    return Container();
-  }
-}
-
-class TrainingRoutineDetailScreen extends StatelessWidget {
-  const TrainingRoutineDetailScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // Go to training routine
-    return Container();
-  }
-}*/

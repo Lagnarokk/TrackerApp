@@ -1,47 +1,121 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+//import 'main.dart';
+import 'Data/Game.dart';
+import 'Data/User.dart';
 
 class listOfGames extends StatelessWidget {
   const listOfGames({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Dummy list of games (replace this with your actual list of games)
-    List<String> games = ['Game 1', 'Game 2', 'Game 3', 'Game 4', 'Game 5'];
-
-    return MaterialApp(
-      //title: 'List Of Games',
-      theme: ThemeData(
-        fontFamily: 'NuevaFuente',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    
+    List<Game> games = [
+      Game(
+        name: 'Game 1',
+        description: 'Description of Game 1',
+        urlAccess: 'URL of Game 1',
+        urlImage: 'Image URL of Game 1',
+        isMultiplayer: true,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('List Of Games'),
-        ),
-        body: ListView.builder(
-          itemCount: games.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text(games[index]),
-              onTap: () {
-                //funcionalidad
+      //add mor games here
+    ];
+
+    List<User> users = [
+      User(
+        userName: 'xxjuanitoxx',
+        userId: '123456',
+        email: 'elmarcianito@example.com',
+        password: '********',
+        profileImagePath: 'assets/icons/skull.svg',
+      )
+      //add more users here
+    ];
+ return Scaffold(
+      appBar: AppBar(
+        title: const Text('List Of Games'),
+      ),
+      body: ListView.builder(
+        itemCount: games.length,
+        itemBuilder: (BuildContext context, int i) {
+          return ListTile(
+            title: Text(games[i].name),
+            onTap: () {
+              // Navigate to the game detail page
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GameDetailScreen(game: games[i], user: users[i]),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
+class GameDetailScreen extends StatelessWidget {
+  final Game game;
+  final User user;
+
+  const GameDetailScreen({required this.game, required this.user});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(game.name),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('${game.description}'),
+            Text('URL Access: ${game.urlAccess}'),
+            Text('URL Image: ${game.urlImage}'),
+            Text('Is Multiplayer: ${game.isMultiplayer}'),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the account screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AccountScreen(user: user),
+                  ),
+                );
               },
-            );
-          },
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const MainMenuScreen()),
-            );
-          },
-          child: const Icon(Icons.arrow_back),
+              child: const Text('Account'),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
+class AccountScreen extends StatelessWidget {
+  final User user;
+
+  const AccountScreen({required this.user});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Account'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('User Name: ${user.userName}'),
+            Text('User ID: ${user.userId}'),
+            Text('Email: ${user.email}'),
+            Text('Password: ${user.password}'),
+          ],
+        ),
+      ),
+    );
+  }
+}

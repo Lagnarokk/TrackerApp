@@ -1,46 +1,40 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+//import 'main.dart';
+import 'Data/User.dart';
 
 class friendList extends StatelessWidget {
   const friendList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //list of friends 
-    List<String> friends = ['Friend 1', 'Friend 2', 'Friend 3', 'Friend 4', 'Friend 5'];
+    // List of friends 
+    List<User> friends = [
+      User(
+        userName: 'amigo pepe',
+        userId: '123456',
+        email: 'elpepe@example.com',
+        password: '********',
+        profileImagePath: 'assets/icons/skull.svg',
+      )
+      //add more users here
+    ];
 
-    return MaterialApp(
-      //title: 'Friend List',
-      theme: ThemeData(
-        fontFamily: 'NuevaFuente',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Friend List'),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Friend List'),
-        ),
-        body: ListView.builder(
-          itemCount: friends.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text(friends[index]),
-              onTap: () {
-                //funcionalidad
-              },
-            );
-          },
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const MainMenuScreen()),
-            );
-          },
-          child: const Icon(Icons.arrow_back),
-        ),
+      body: ListView.builder(
+        itemCount: friends.length,
+        itemBuilder: (BuildContext context, int i) {
+          return ListTile(
+            title: Text(friends[i].userName),
+            onTap: () {
+              // Functionality
+            },
+          );
+        },
       ),
     );
   }
 }
+
