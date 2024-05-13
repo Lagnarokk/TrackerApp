@@ -5,6 +5,7 @@ class Game {
   final String urlImage;
   final bool isMultiplayer;
 
+
   Game({
     required this.name,
     required this.description,

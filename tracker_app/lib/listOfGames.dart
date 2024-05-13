@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 //import 'main.dart';
 import 'Data/Game.dart';
 import 'Data/User.dart';
+import 'trainingRoutines.dart';
 
 class listOfGames extends StatelessWidget {
   const listOfGames({super.key});
@@ -11,8 +12,8 @@ class listOfGames extends StatelessWidget {
     
     List<Game> games = [
       Game(
-        name: 'Game 1',
-        description: 'Description of Game 1',
+        name: 'Valorant',
+        description: 'Description of the Game',
         urlAccess: 'URL of Game 1',
         urlImage: 'Image URL of Game 1',
         isMultiplayer: true,
@@ -86,6 +87,19 @@ class GameDetailScreen extends StatelessWidget {
                 );
               },
               child: const Text('Account'),
+              ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the training routine list
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => trainingRoutines(),
+                  ),
+                );
+              },
+              child: const Text('Choose Routine'),
             ),
           ],
         ),
