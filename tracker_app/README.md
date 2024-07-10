@@ -26,6 +26,26 @@ especificamente shooters, permitiendo elegir rutinas de entrenamiento y comparti
 
 Link video: https://youtu.be/spA_vmVD5mI
 
+Funcionalidades Principales a Validar Proyecto 2:
+
+Este proyecto de prototipo funcional de una aplicación móvil está diseñado para demostrar las siguientes funcionalidades clave:
+
+Gestión de Rutinas de Entrenamiento:
+Permite a los usuarios seleccionar y gestionar rutinas de entrenamiento específicas para mejorar sus habilidades en juegos seleccionados.
+Integración de tres niveles de dificultad por cada juego para adaptar las rutinas según las necesidades del usuario.
+
+Persistencia de Datos:
+Utilización de servicios de persistencia para almacenar de manera segura y efectiva la rutina seleccionada por cada usuario, así como su progreso y historial de interacciones.
+
+Interfaz de Usuario Intuitiva:
+Diseño cohesivo y accesible que incluye un menú de navegación claro y una paleta de colores definida para una experiencia de usuario consistente y agradable.
+
+Visualización de Progreso y Estadísticas:
+Funcionalidad para visualizar el avance del usuario en cada rutina, incluyendo la cantidad de pasos completados y pendientes.
+
+Integración de Juegos:
+Presentación detallada de al menos cuatro juegos populares con información completa, incluyendo año de lanzamiento, género, puntuación y acceso a la página oficial del juego.
+
 Requerimientos Funcionales:
 
 Autenticación de Usuario:

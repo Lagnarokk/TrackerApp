@@ -1,3 +1,5 @@
+import 'Routine.dart';
+
 class Game {
   final String name;
   final String description;
@@ -7,6 +9,7 @@ class Game {
   final int year;
   final String genre;
   final double rating;
+  List<Routine> routines = [];
 
   Game({
     required this.name,
