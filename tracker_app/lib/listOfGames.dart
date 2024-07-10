@@ -5,6 +5,7 @@ import 'Data/Routine.dart';
 import 'Data/User.dart';
 import 'trainingRoutines.dart';
 import 'friendList.dart';
+import 'routineHistoryScreen.dart';
 
 class listOfGames extends StatelessWidget {
   const listOfGames({super.key});
@@ -264,11 +265,11 @@ class RoutineDetailScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => friendList(),
+                    builder: (context) => routineHistoryScreen(routine: routine),
                   ),
                 );
               },
-              child: const Text('Share Routine'),
+              child: const Text('View History'),
             ),
           ],
         ),
