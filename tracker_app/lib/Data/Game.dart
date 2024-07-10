@@ -4,7 +4,9 @@ class Game {
   final String urlAccess;
   final String urlImage;
   final bool isMultiplayer;
-
+  final int year;
+  final String genre;
+  final double rating;
 
   Game({
     required this.name,
@@ -12,5 +14,9 @@ class Game {
     required this.urlAccess,
     required this.urlImage,
     required this.isMultiplayer,
+    required this.year,
+    required this.genre,
+    required this.rating,
   });
 }
+

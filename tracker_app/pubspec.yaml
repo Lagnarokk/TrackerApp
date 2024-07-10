@@ -63,6 +63,11 @@ flutter:
   assets:
    - assets/icons/skull.svg
    - assets/icons/titleIcon.svg
+   - assets/icons/valorant.png
+   - assets/icons/fortnite.jpg
+   - assets/icons/warzone.png
+   - assets/icons/apex.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
